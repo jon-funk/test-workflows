@@ -1,0 +1,16 @@
+name: Old CICD Pipeline
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  my-cicd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: cicd
+        run: |
+          echo "starting pipeline..."
+          duration=$(expr $RANDOM % 1800)
+          sleep $duration
+          echo "finished pipeline in $duration"
