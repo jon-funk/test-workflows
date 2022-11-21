@@ -11,6 +11,6 @@ jobs:
       - name: cicd
         run: |
           echo "starting pipeline..."
-          duration=$(expr $RANDOM % 1800)
+          duration=$(expr $RANDOM % 3600)
           sleep $duration
           echo "finished pipeline in $duration"
