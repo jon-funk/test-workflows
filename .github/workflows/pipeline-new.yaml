@@ -5,12 +5,29 @@ on:
   workflow_dispatch:
 
 jobs:
-  my-cicd:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: cicd
+      - name: build
         run: |
-          echo "starting pipeline..."
-          duration=$(expr $RANDOM % 120)
+          echo "building"
+          duration=$(expr $RANDOM % 40)
           sleep $duration
-          echo "finished pipeline in $duration"
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: |
+          echo "testing"
+          duration=$(expr $RANDOM % 40)
+          sleep $duration
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+        run: |
+          echo "deploying"
+          duration=$(expr $RANDOM % 40)
+          sleep $duration

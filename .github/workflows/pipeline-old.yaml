@@ -5,12 +5,29 @@ on:
   workflow_dispatch:
 
 jobs:
-  my-cicd:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: cicd
+      - name: build
         run: |
-          echo "starting pipeline..."
-          duration=3000
+          echo "building"
+          duration=800
           sleep $duration
-          echo "finished pipeline in $duration"
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: |
+          echo "testing"
+          duration=1200
+          sleep $duration
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+        run: |
+          echo "deploying"
+          duration=1000
+          sleep $duration
