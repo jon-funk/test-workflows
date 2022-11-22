@@ -11,7 +11,7 @@ jobs:
       - name: build
         run: |
           echo "building"
-          duration=$(expr $RANDOM % 40)
+          duration=45
           sleep $duration
   test:
     needs: build
@@ -20,7 +20,7 @@ jobs:
       - name: test
         run: |
           echo "testing"
-          duration=$(expr $RANDOM % 40)
+          duration=64
           sleep $duration
   deploy:
     needs: test
@@ -29,5 +29,5 @@ jobs:
       - name: deploy
         run: |
           echo "deploying"
-          duration=$(expr $RANDOM % 40)
+          duration=43
           sleep $duration
