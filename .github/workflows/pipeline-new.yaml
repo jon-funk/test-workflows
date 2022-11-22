@@ -20,7 +20,7 @@ jobs:
       - name: test
         run: |
           echo "testing"
-          duration=64
+          duration=37
           sleep $duration
   deploy:
     needs: test
